@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MirumTest.Models.RecentTwitter>
+@{
+    int i = 0;
+}
+
+<aside role="complementary" id="sidebar">
+    <h3 class="tweet-heading">Mirum</h3>
+    <p class="tweet-intro">Our most recent updates:</p>
+
+
+    
+    @foreach (var item in Model)
+    {
+        if (i < 6)
+        {
+            <div class="twitter-feed">
+                <div class="tweet_id_@item.Id">
+                    <p>@item.Text </p>
+                    <p class="tweet-datetime">Posted by Mirum on @item.Created_at</p>
+                </div>
+            </div>
+        }
+        
+        i++;
+    }
+    
+
+</aside>
+

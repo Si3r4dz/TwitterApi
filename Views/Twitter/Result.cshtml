@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<MirumTest.Models.RecentTwitter>
+
+
+<div class="content-wrap">
+    <section role="main" id="content">
+        <div class="tweet-search">
+            <h3>Search for updates:</h3>
+            <form id="search-form" asp-action="SearchResults" asp-route-id="1">
+                <label id="search-text-label" for="search-text" class="reader">
+                    Enter some text to search
+                    on:
+                </label>
+                <input Name="Search" maxlength="25" type="text" id="search-text" placeholder="@ViewData["Search"]" />
+                <input type="submit" id="search-button" value="Search" />
+            </form>
+        </div>
+        <div class="tweet-search-results">
+            <div class="results-container">
+                <h3>Search results:</h3>
+
+                @foreach (var item in Model)
+                {
+                    <div class="twitter-feed">
+                        <div class="tweet_id_@item.Id">
+                            <p>@item.Text </p>
+                            <p class="tweet-datetime">Posted by @item.Username on @item.Created_at</p>
+                        </div>
+                    </div>
+                }
+                <div class="pagination">
+                    
+                        <a class="previous" href="#" title="previous page">
+                            <span class="reader">
+                                Previous page of
+                                results
+                            </span>
+                        </a>
+                    
+
+                    <a class="next" title="next page" asp-route-id=""><span class="reader">Next page of results</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,25 @@
+﻿@model MirumTest.Models.RecentTwitter
+
+@{
+    ViewData["Title"] = "Serch";
+}
+
+
+<section role="main" id="content">
+    <div class="tweet-search">
+        <h3>Search for updates:</h3>
+        <form id="search-form" asp-action="Result" asp-route-id="1">
+            <label id="search-text-label" for="search-text" class="reader">
+                Enter some text to search
+                on:
+            </label>
+            <div>
+                <input asp-for="search"  id="search-text" placeholder="search phrase..." />
+                <span class="text-danger" value="Search"></span>
+
+            </div>
+
+            <input type="submit" id="search-button" value="Search" />
+        </form>
+    </div>
+</section>

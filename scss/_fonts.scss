@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Neue Haas Unica Pro";
+  src: url("../fonts/Neue-Haas-Unica-Pro.otf") format("otf"),
+      url("../fonts/Alternative/Neue-Haas-Unica-Pro.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Antarctican Mono";
+  src: url("../fonts/Antarctican-Mono-Medium.otf") format("otf")
+}
+
+$regular: 400;
+$bold: 700;
+$medium: 500;
+$light: 300;
+
+$sans-serif: 'Montserrat', sans-serif;
+$neue-haas-unica-pro: 'Neue Haas Unica Pro', sans-serif;
+$antarctican-mono: 'Antarctican Mono', sans-serif;
+$arial: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$verdana: Verdana, Geneva, sans-serif;
+$tahoma: Tahoma, Verdana, Segoe, sans-serif;

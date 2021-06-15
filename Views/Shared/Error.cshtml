@@ -1,0 +1,49 @@
+﻿
+@model MirumTest.Models.RecentTwitter;
+
+@{
+    ViewData["Title"] = "Serch";
+}
+
+<div id="main" class="clearfix">
+    <div class="title-bar">
+        <h2 class="content-wrap">Welcome to the Twitter Page</h2>
+    </div>
+    <div class="content-wrap">
+        <section role="main" id="content">
+            <div class="tweet-search">
+                <h3>Search for updates:</h3>
+                <form id="search-form" asp-action="SearchResults">
+                    <label id="search-text-label" for="search-text" class="reader">
+                        Enter some text to search
+                        on:
+                    </label>
+                    <div>
+                        <input asp-for="search" id="search-text" placeholder="search phrase..." />
+                        <span asp-validation-for="search" class="text-danger" value="Search"></span>
+
+                    </div>
+
+                    <input type="submit" id="search-button" value="Search" />
+
+                    Sorry, but your search did not return any results
+
+                </form>
+            </div>
+        </section>
+        <aside role="complementary" id="sidebar">
+            <h3 class="tweet-heading">Mirum</h3>
+            <p class="tweet-intro">Our most recent updates:</p>
+            <div class="twitter-feed">
+                <div class="tweet">
+                    <p>This is an example Tweet that will be up to 140 characters long. </p>
+                    <p class="tweet-datetime">Posted on 3rd May 2010 at 11.30am</p>
+                </div>
+                <div class="tweet">
+                    <p>This is an example <a href="#">Tweet</a> that will be up to 140 characters long. </p>
+                    <p class="tweet-datetime">Posted on 3rd May 2010 at 11.30am</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>

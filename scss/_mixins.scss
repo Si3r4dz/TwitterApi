@@ -1,0 +1,57 @@
+@mixin box-sizing($val) {
+  box-sizing: $val;
+  -moz-box-sizing: $val;
+  -webkit-box-sizing: $val;
+}
+
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+@mixin vertGradient($top, $bottom) {
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $top 0%,$bottom 100%); /* W3C */
+//  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$top, endColorstr=$bottom,GradientType=0 ); /* IE6-9 */
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin hideText {
+  display: block;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+@mixin opacity($val) {
+  zoom: 1;
+  filter: alpha(opacity=$val*100);
+  opacity: $val;
+}
+
+@mixin remCalc($prop, $val) {
+  #{$prop}: $val + px;
+  #{$prop}: (0.1 * $val) + rem;
+}
+
+@mixin remCalc2($prop, $top, $right) {
+  #{$prop}: $top + px $right + px;
+  #{$prop}: (0.1 * $top) + rem (0.1 * $right) + rem;
+}
+
+@mixin remCalc4($prop, $top, $right, $bottom, $left) {
+  #{$prop}: $top + px $right + px $bottom + px $left + px;
+  #{$prop}: (0.1 * $top) + rem (0.1 * $right) + rem (0.1 * $bottom) + rem (0.1 * $left) + rem;
+}

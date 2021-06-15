@@ -1,0 +1,38 @@
+﻿@using MirumTest.Controllers
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Developer Test | Mirum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <link rel="icon" href="~/favico.ico">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/screen.css" />
+
+</head>
+
+<body role="document">
+    <header role="banner" id="site-header">
+        <div class="content-wrap">
+            <h1><a asp-controller="Twitter" asp-action="Index" id="header-logo"><img src="~/Images/logo.png" alt="Mirum"></a></h1>
+        </div>
+    </header>
+    <div id="main" class="clearfix">
+        <div class="title-bar">
+            <h2 class="content-wrap">Welcome to the Twitter Page</h2>
+        </div>
+        <div class="content-wrap">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer id="site-footer" class="clearfix">
+        <div class="content-wrap">
+            <span class="pull-right">&copy;Mirum 2020</span>
+        </div>
+    </footer>
+</body>
+
+</html>
