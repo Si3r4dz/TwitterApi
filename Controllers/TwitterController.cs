@@ -8,11 +8,20 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using MirumTest.Models;
 using MirumTest.API;
+using X.PagedList;
+using X.PagedList.Mvc;
+using MirumTest.Intrefaces;
 
 namespace MirumTest.Controllers
 {
     public class TwitterController : Controller
     {
+
+        readonly ITwitService _twitService;
+        public TwitterController(ITwitService twitService)
+        {
+            _twitService = twitService;
+        }
 
         public IActionResult Index()
         {
@@ -20,35 +29,23 @@ namespace MirumTest.Controllers
             return View();
         }
 
-
+       public static IEnumerable<RecentTwitter> model;
 
         //Displaying 10 Tweets in "SearchResult" Page 
 
-        public IActionResult Result(string Search)
+        public IActionResult Result(int? page)
         {
-            ViewData["Search"] = Search;
-            API.API api = new API.API();
-            var model = new List<RecentTwitter>();
-            var mirum = new List<MirumTweets>();
-            model = api.SerchTenTweets(Search);
-            mirum = api.SearchMirumTweets();
-            dynamic mymodel = new ExpandoObject();
-            mymodel.model = model;
-            mymodel.mirum = mirum;
 
-            if (model != null)
-            {
+            
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
 
+                var mod = model.ToPagedList(pageNumber, pageSize);
 
-                return View(model);
+                return View(mod);
+           
 
-
-            }
-            else
-            {
-                return RedirectToAction("Error");
-
-            }
+            
         }
 
         public IActionResult Error(ErrorViewModel mod)
@@ -56,7 +53,12 @@ namespace MirumTest.Controllers
             return View();
         }
 
-
+        
+        public IActionResult GetTwits(String Search)
+        {
+            model = _twitService.Twitters(Search);
+            return RedirectToAction("Result");
+        }
 
 
     }

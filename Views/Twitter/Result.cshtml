@@ -1,12 +1,15 @@
-﻿
-@model IEnumerable<MirumTest.Models.RecentTwitter>
+﻿@model X.PagedList.IPagedList<MirumTest.Models.RecentTwitter>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+
 
 
 <div class="content-wrap">
     <section role="main" id="content">
         <div class="tweet-search">
             <h3>Search for updates:</h3>
-            <form id="search-form" asp-action="SearchResults" asp-route-id="1">
+            <form id="search-form" asp-action="GetTwits">
                 <label id="search-text-label" for="search-text" class="reader">
                     Enter some text to search
                     on:
@@ -28,20 +31,23 @@
                         </div>
                     </div>
                 }
-                <div class="pagination">
-                    
-                        <a class="previous" href="#" title="previous page">
-                            <span class="reader">
-                                Previous page of
-                                results
-                            </span>
-                        </a>
-                    
+                <br />
 
-                    <a class="next" title="next page" asp-route-id=""><span class="reader">Next page of results</span></a>
-                </div>
+
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            <div class="pagination">
+                <div class="tw"></div>
+                @Html.PagedListPager(Model, page => Url.Action("Result", new { page }), PagedListRenderOptions.TwitterBootstrapPagerAligned)
+                
+
+
+
+
+                
+            </div>
             </div>
         </div>
     </section>
 </div>
+
 
